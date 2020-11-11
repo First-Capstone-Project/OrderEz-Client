@@ -1,6 +1,6 @@
-import React from 'react'
+import React,{Component} from 'react'
 import CustomerService from '../services/customer-api-service'
-export default class AddCustomer extends React.Component{
+export default class AddCustomer extends Component{
 
     handleFormSubmit = (event) =>{
         event.preventDefault();

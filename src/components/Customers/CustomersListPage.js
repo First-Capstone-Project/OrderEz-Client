@@ -11,6 +11,8 @@ export default class CustomersListPage extends Component {
         customerList: [],
     }
 
+    //API call to server to get Customers
+    //
     componentDidMount() {
         CustomerService.getCustomers()
             .then(customerList => {
@@ -19,6 +21,8 @@ export default class CustomersListPage extends Component {
                 })
             })
     }
+    //Search button form
+    //
     handleFormSubmit = (event) =>{
         event.preventDefault();
         const form = new FormData(event.target)
@@ -26,6 +30,7 @@ export default class CustomersListPage extends Component {
         console.log(search)
     }
 
+    //Render Search button and pass down props to Customer
     render() {
         return (
         <section className='CustomerList'>
