@@ -16,7 +16,26 @@ const ItemService = {
                 ? res.json().then(e => Promise.reject(e))
                 : res.json()
         )
-    }
+    },
+    insertItem(item_name,item_price,type_id_fk){
+        return fetch(`${config.API_ENDPOINT}/items`,{
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                item_name,
+                item_price,
+                type_id_fk,
+            }),
+        })
+        .then(res =>
+            (!res.ok)
+              ? res.json().then(e => Promise.reject(e))
+              : res.json()
+          )
+    },
+    
 }
 
 export default ItemService

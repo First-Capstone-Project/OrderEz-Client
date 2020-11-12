@@ -9,6 +9,12 @@ export default class AddItem extends Component {
 
     handleFormSubmit = (event) => {
         event.preventDefault();
+        const form = new FormData(event.target)
+        const name = form.get('name')
+        const price = form.get('price')
+        const typeId = form.get('type')
+
+        ItemService.insertItem(name,price,typeId)
     }
     handleChange = (event) => {
         this.setState({
@@ -20,7 +26,7 @@ export default class AddItem extends Component {
     render() {
         const types = this.props.types
         const options = types.map((type) => 
-            <option key={type.id} value={type.name}>
+            <option name={type.id} key={type.id} value={type.id}>
                 {type.name}
             </option>
         )
@@ -32,9 +38,10 @@ export default class AddItem extends Component {
                     <div><input required name='name' id='name' type="text" placeholder="Enter new Item Name"></input></div>
                     <div><input required name='price' id='price' type="text" placeholder="Enter Price of new Item"></input></div>
                     <p>Select Type</p>
-                    <select className="select-type">
+                    <select name='type' className="select-type">
                         {options}
                     </select>
+                    <button className='Submit' type='submit'>Add New Item</button>
                 </form>
             </section>
         )
