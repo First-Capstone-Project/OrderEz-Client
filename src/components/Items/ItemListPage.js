@@ -2,16 +2,16 @@ import React, { Component } from 'react'
 import ItemService from '../services/item-api-service'
 import AddItem from './AddItem'
 import Item from './Item'
+import './item.css'
 
 
 export default class ItemListPage extends Component {
 
     state = {
         itemList: [],
-        itemTypes: [],
     }
 
-    //Api call to server to get Items and Types
+    //Api call to server to get Items
     //
     componentDidMount(){
         ItemService.getItems()
@@ -20,24 +20,16 @@ export default class ItemListPage extends Component {
                 itemList
             })
         })
-        ItemService.getTypes()
-        .then(itemTypes => {
-            this.setState({
-                itemTypes
-            })
-        })
     }
     
     
 
     render(){
         return(
-        <section className='Item List'>
+        <section className='Item-List'>
+        <h2>Add Item to order</h2>
         <Item
         items = {this.state.itemList}
-        />
-        <AddItem 
-        types = {this.state.itemTypes}
         />
         </section>
         )

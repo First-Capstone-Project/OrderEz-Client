@@ -4,7 +4,16 @@ import ItemService from '../services/item-api-service'
 export default class AddItem extends Component {
 
     state = {
-        types: 'Pizza',
+       types: [],
+    }
+
+    componentDidMount(){
+        ItemService.getTypes()
+        .then(types => {
+            this.setState({
+                types
+            })
+        })
     }
 
     handleFormSubmit = (event) => {
@@ -14,23 +23,19 @@ export default class AddItem extends Component {
         const price = form.get('price')
         const typeId = form.get('type')
 
-        ItemService.insertItem(name,price,typeId)
+        ItemService.insertItem(name, price, typeId)
+        console.log('New Item Added')
     }
-    handleChange = (event) => {
-        this.setState({
-            types: event.target.value
-        })
-    }
-
+    
 
     render() {
-        const types = this.props.types
-        const options = types.map((type) => 
+        const types = this.state.types
+        const options = types.map((type) =>
             <option name={type.id} key={type.id} value={type.id}>
                 {type.name}
             </option>
         )
-        
+
         return (
             <section>
                 <h1>Add Item</h1>
@@ -41,9 +46,10 @@ export default class AddItem extends Component {
                     <select name='type' className="select-type">
                         {options}
                     </select>
-                    <button className='Submit' type='submit'>Add New Item</button>
+                    <div><button className='Submit' type='submit'>Add New Item</button></div>
                 </form>
             </section>
         )
     }
 }
+

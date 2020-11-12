@@ -1,9 +1,20 @@
 //import { render } from '@testing-library/react'
-import React, {Component}  from 'react'
+import React, { Component } from 'react'
 import './Customer.css'
+import OrderService from '../services/order-api-service'
 export default class Customer extends Component {
 
-    //Map props to variables and render the List Items 
+    handleFormSubmit = (event) => {
+        event.preventDefault();
+        const form = new FormData(event.target)
+        const customerID = form.get('customer')
+
+        OrderService.createOrder(customerID)
+
+
+    }
+
+    //Map props to variables and render the Select Items 
     //
     getcustomers = () => {
         return (this.props.customer).map((customer) => {
@@ -11,21 +22,25 @@ export default class Customer extends Component {
             const name = customer.name
             const adress = customer.adress
             const phone = customer.phone
-            return <li key={id}>
-                    <h2>{name}</h2>
-                    <p>{adress}</p>
-                    <p>{phone}</p>
-                   </li>
+            return <option name={id} key={id} value={id}>
+                {name} - {adress} - {phone}
+            </option>
+
         })
     }
-    //Render Unordered list
-    //
+
     render() {
 
         return (
-            <ul>
-                {this.getcustomers()}
-            </ul>
+            <form onSubmit={this.handleFormSubmit}>
+                <div className='container'>
+                    <select multiple name='customer' className="select-customer">
+                        {this.getcustomers()}
+                    </select>
+                </div>
+                <button className='Submit' type='submit'>Create Order</button>
+            </form>
         )
     }
 }
+

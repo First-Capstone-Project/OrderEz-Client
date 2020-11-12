@@ -3,7 +3,20 @@ import React, { Component } from 'react'
 
 export default class Item extends Component {
 
-    //Map props to variables and render the Item List
+
+    handleFormSubmit = (event) => {
+        event.preventDefault();
+        const form = new FormData(event.target)
+        const id = form.get('item')
+        
+        
+    }
+    
+    finish = () =>{
+        console.log('finish')
+    }
+    
+    //Map props to variables and render the Item Select
     //
     getItems = () => {
         return (this.props.items).map((item) => {
@@ -11,18 +24,27 @@ export default class Item extends Component {
             const name = item.name
             const price = item.price
             const type = item.type
-            return <li key={id}>
-                <h2>{name}-{type}</h2>
-                <p>{price}.00 $</p>
-            </li>
+            return <option name={id} key={id} value={id}>
+                {name} {type} --------------------- 
+                {price}.00$
+        </option>
         })
     }
 
     render() {
         return (
-            <ul>
-                {this.getItems()}
-            </ul>
+            
+            <form onSubmit={this.handleFormSubmit}>
+                <div className='container'>
+                    <select multiple name='item' className="select-item">
+                        {this.getItems()}
+                    </select>
+                </div>
+                <button className='Submit' type='submit'>Add Item</button>
+                <button onClick={this.finish}>Finish</button>
+            </form>
+            
+            
         )
     }
 }
