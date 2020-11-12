@@ -1,19 +1,35 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
+import CustomerListContext from '../Contexts/CustomerListContext';
+import OrderService from '../services/order-api-service';
 
 
-export default class Item extends Component {
+class Item extends Component {
 
+    state = {
+        id: 0
+    }
+
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount(){
+        this.setState({
+            id: this.props.match.params.order_id 
+        })
+    }
 
     handleFormSubmit = (event) => {
         event.preventDefault();
         const form = new FormData(event.target)
         const id = form.get('item')
-        
-        
+        const customerOrderId = this.state.id
+        OrderService.addItem(id,customerOrderId)
     }
     
     finish = () =>{
-        console.log('finish')
+        OrderService.getReciept(this.state.id)
     }
     
     //Map props to variables and render the Item Select
@@ -48,3 +64,5 @@ export default class Item extends Component {
         )
     }
 }
+
+export default withRouter(Item)

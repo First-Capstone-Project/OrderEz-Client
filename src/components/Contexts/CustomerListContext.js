@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 
 
 const CustomerListContext = React.createContext({
-    customerList : [],
-    error : null,
-    setCustomerList: () => {},
+    customer: 0
 })
 
 export default CustomerListContext
@@ -13,6 +11,7 @@ export class CustomerListProvider extends Component{
     state = {
         customerList : [],
         error: null,
+        customer: 0
     }
 
     setCustomerList = customerList => {
@@ -29,6 +28,7 @@ export class CustomerListProvider extends Component{
 
     render(){
         const value = {
+            customer : this.state.customer,
             customerList : this.state.customerList,
             error : this.state.error,
             setError: this.setError,

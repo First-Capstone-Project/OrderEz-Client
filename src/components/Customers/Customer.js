@@ -1,23 +1,50 @@
 //import { render } from '@testing-library/react'
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import './Customer.css'
 import OrderService from '../services/order-api-service'
-export default class Customer extends Component {
+import CustomerService from '../services/customer-api-service'
+import CustomerListContext from '../Contexts/CustomerListContext'
+class Customer extends Component {
+
+    state = {
+        customerList: []
+    }
+
+    constructor(props) {
+        super(props);
+    }
+
+    //API call to server to get Customers
+    //
+    componentDidMount() {
+        CustomerService.getCustomers()
+            .then(customerList => {
+                this.setState({
+                    customerList
+                })
+            })
+    }
 
     handleFormSubmit = (event) => {
         event.preventDefault();
         const form = new FormData(event.target)
         const customerID = form.get('customer')
-
+        console.log(customerID)
         OrderService.createOrder(customerID)
+            .then(res => {
+                console.log(res)
+                this.props.history.push(`/items/${res.order_customer_id}`);
+            })
 
+        
 
     }
 
     //Map props to variables and render the Select Items 
     //
     getcustomers = () => {
-        return (this.props.customer).map((customer) => {
+        return (this.state.customerList).map((customer) => {
             const id = customer.id
             const name = customer.name
             const adress = customer.adress
@@ -43,4 +70,4 @@ export default class Customer extends Component {
         )
     }
 }
-
+export default withRouter(Customer)
