@@ -1,29 +1,75 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import OrderService from '../services/order-api-service'
-export default class Reciept extends Component{
+class Reciept extends Component {
 
     state = {
-        info: [],
+        reciept: [],
+        total: 0,
+        customer: []
     }
 
-    componentDidMount(){
-        id = //customer order id
-        OrderService.getReciept(id)
-        .then(res =>{
-            this.setState({
-                info
+
+    componentDidMount() {
+        let rID = this.props.match.params.reciept_id
+        OrderService.getReciept(rID)
+            .then(res => {
+                this.setState({
+                    reciept: res.rows,
+                })
             })
+        OrderService.getContact(rID)
+            .then(res => {
+                this.setState({
+                    customer: res.rows
+                })
+            })    
+    }
+    renderReciept = () => {
+        return (this.state.reciept).map((res) => {
+            const name = res.item_name
+            return <li key={res.id}>
+                <h2>{name}--{res.type_name}</h2>
+                <h3>{res.item_price}$</h3>
+            </li>
+        })
+
+    }
+    total = () => {
+        let total = 0
+        this.state.reciept.map((res)=>{
+            total+=res.item_price
+        })
+        return total
+    }
+    customer = () => {
+        return this.state.customer.map((res)=>{
+        return <div>
+            <h1>{res.customer_name}</h1>
+            <h2>{res.customer_adress}</h2>
+            <p>{res.customer_phone}</p>
+            </div>
+               
         })
     }
+    goBack = () => {
+        this.props.history.push('/')
+    }
 
-    render(){
-        return(
+    render() {
+        return (
             <div>
-            <h1>Summary</h1>
-            <p>Ime i prezime broj whatever</p>
-
-            <p>Total price</p>
+            <section className='Customer'>
+                <h1>{this.customer()}</h1>
+            </section>    
+            <ul>
+                {this.renderReciept()}
+            </ul>
+            <h2>Total: {this.total()}$</h2>
+            <button onClick={this.goBack}>Done</button>
             </div>
         )
     }
 }
+
+export default withRouter(Reciept)

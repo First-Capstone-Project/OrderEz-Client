@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import CustomerListContext from '../Contexts/CustomerListContext';
 import OrderService from '../services/order-api-service';
 
 
@@ -26,10 +25,11 @@ class Item extends Component {
         const id = form.get('item')
         const customerOrderId = this.state.id
         OrderService.addItem(id,customerOrderId)
+        
     }
     
     finish = () =>{
-        OrderService.getReciept(this.state.id)
+        this.props.history.push(`/reciept/${this.state.id}`)
     }
     
     //Map props to variables and render the Item Select
@@ -49,7 +49,7 @@ class Item extends Component {
 
     render() {
         return (
-            
+            <div>
             <form onSubmit={this.handleFormSubmit}>
                 <div className='container'>
                     <select multiple name='item' className="select-item">
@@ -57,9 +57,11 @@ class Item extends Component {
                     </select>
                 </div>
                 <button className='Submit' type='submit'>Add Item</button>
-                <button onClick={this.finish}>Finish</button>
+                
             </form>
+            <button onClick={this.finish}>Finish</button>
             
+            </div>
             
         )
     }

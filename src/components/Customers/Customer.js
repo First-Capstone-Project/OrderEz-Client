@@ -4,20 +4,16 @@ import { withRouter } from 'react-router-dom'
 import './Customer.css'
 import OrderService from '../services/order-api-service'
 import CustomerService from '../services/customer-api-service'
-import CustomerListContext from '../Contexts/CustomerListContext'
 class Customer extends Component {
 
     state = {
         customerList: []
     }
 
-    constructor(props) {
-        super(props);
-    }
 
     //API call to server to get Customers
     //
-    componentDidMount() {
+    componentDidMount(){
         CustomerService.getCustomers()
             .then(customerList => {
                 this.setState({
@@ -36,9 +32,6 @@ class Customer extends Component {
                 console.log(res)
                 this.props.history.push(`/items/${res.order_customer_id}`);
             })
-
-        
-
     }
 
     //Map props to variables and render the Select Items 
@@ -57,7 +50,6 @@ class Customer extends Component {
     }
 
     render() {
-
         return (
             <form onSubmit={this.handleFormSubmit}>
                 <div className='container'>

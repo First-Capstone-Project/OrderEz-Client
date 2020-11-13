@@ -1,5 +1,5 @@
 h1{
-    text-align: center;
+	text-align: center;
 }
 .select-item {
     height: 250px;
@@ -17,3 +17,4 @@ h1{
 	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
 	border-radius: .5em;
 }
+

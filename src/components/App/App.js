@@ -6,6 +6,7 @@ import ItemListPage from '../Items/ItemListPage'
 import CustomersListPage from '../Customers/CustomersListPage'
 import Customer from '../Customers/Customer'
 import AddItem from '../Items/AddItem'
+import Reciept from '../OrderReciept/reciept'
 //import CustomerService from '../services/customer-api-service'
 
 class App extends Component {
@@ -32,6 +33,11 @@ class App extends Component {
         <Route 
         path="/newitem"
         component={AddItem}
+        />
+
+        <Route 
+        path="/reciept/:reciept_id"
+        component={Reciept}
         />
         
       </div>
