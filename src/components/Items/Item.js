@@ -17,39 +17,11 @@ class Item extends Component {
 
     }
 
-    handleFormSubmit = (event) => {
-        event.preventDefault();
-        const form = new FormData(event.target)
-        const id = form.get('item')
-        const customerOrderId = this.state.id
-        OrderService.addItem(id, customerOrderId)
-            .then(() =>
-                OrderService.getReciept(customerOrderId)
-                    .then(rec => {
-                        this.setState({
-                            current: rec.rows
-                        })
-                    }))
-    }
-
     finish = () => {
         this.props.history.push(`/reciept/${this.state.id}`)
     }
 
-    //Map props to variables and render the Item Select
-    //
-    getItems = () => {
-        return (this.props.items).map((item) => {
-            const id = item.id
-            const name = item.name
-            const price = item.price
-            const type = item.type
-            return <option name={id} key={id} value={id}>
-                {name} {type} ---------------------
-                {price}.00$
-        </option>
-        })
-    }
+    
     handleClick = (event) => {
         const customerOrderId = this.state.id
         OrderService.addItem(event, customerOrderId)
@@ -85,7 +57,6 @@ class Item extends Component {
                 <div className='button-div'>
                     <button className='finish' onClick={this.finish}>Finish</button>
                 </div>
-                <form onSubmit={this.handleFormSubmit}>
                 <section className='Current'>
                         <h2>Current Order Details</h2>
                         {current}
@@ -94,7 +65,6 @@ class Item extends Component {
                     <section className='item-select'>
                         {this.getMenuItem()}
                     </section>
-                </form>
             </div>
 
         )
