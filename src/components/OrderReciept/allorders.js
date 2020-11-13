@@ -20,7 +20,11 @@ class AllOrders extends Component {
     }
 
     renderList = () => {
-        return this.state.active.map((order) => {
+        return this.state.active
+        .sort((order1,order2)=>{
+            return (order1.customer_id_fk-order2.customer_id_fk)
+        })
+        .map((order) => {
             return <tr>
                 <td>{order.customer_id_fk}</td>
                 <td><Link to={`/reciept/${order.customer_id_fk}`}>
@@ -30,6 +34,7 @@ class AllOrders extends Component {
                 <td>{order.sum}$</td>
             </tr>
         })
+        
     }
 
 

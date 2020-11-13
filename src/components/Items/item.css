@@ -35,8 +35,14 @@ ul{
 }
 table, th, td {
 	border: 1px solid black;
-  }
-  table.center {
+}
+table.center {
 	margin-left: auto;
 	margin-right: auto;
-  }
+}
+.menuitem{
+	border: thin solid black;
+}
+.item-select{
+	text-align: center;
+}

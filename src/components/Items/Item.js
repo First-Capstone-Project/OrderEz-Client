@@ -10,10 +10,6 @@ class Item extends Component {
         current: []
     }
 
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         this.setState({
             id: this.props.match.params.order_id
@@ -27,14 +23,13 @@ class Item extends Component {
         const id = form.get('item')
         const customerOrderId = this.state.id
         OrderService.addItem(id, customerOrderId)
-
-        OrderService.getReciept(customerOrderId)
-            .then(rec => {
-                this.setState({
-                    current: rec.rows
-                })
-            })
-            
+            .then(() =>
+                OrderService.getReciept(customerOrderId)
+                    .then(rec => {
+                        this.setState({
+                            current: rec.rows
+                        })
+                    }))
     }
 
     finish = () => {
@@ -55,34 +50,51 @@ class Item extends Component {
         </option>
         })
     }
+    handleClick = (event) => {
+        const customerOrderId = this.state.id
+        OrderService.addItem(event, customerOrderId)
+            .then(() =>
+                OrderService.getReciept(customerOrderId)
+                    .then(rec => {
+                        this.setState({
+                            current: rec.rows
+                        })
+                    }))
+    }
 
-    current = () => {
-        return this.state.current.map((order) => {
+    getMenuItem = () => {
+        return (this.props.items).map((item) => {
+            return <div className='menuitem'>
+                <h3>{item.name} {item.type} - {item.price} $</h3>
+                <button value={item.id} onClick={e => this.handleClick(e.target.value)}>Add</button>
+            </div>
+        })
+    }
+
+
+
+    render() {
+        const current = this.state.current.map((order) => {
             return <ul>
                 <li className='itemz'><p>{order.item_name} - {order.type_name} - {order.item_price}$</p></li>
             </ul>
         })
-    }
 
-    render() {
         return (
             <div>
+                <div className='button-div'>
+                    <button className='finish' onClick={this.finish}>Finish</button>
+                </div>
                 <form onSubmit={this.handleFormSubmit}>
-                    <div className='container'>
-                        <select multiple name='item' className="select-item">
-                            {this.getItems()}
-                        </select>
-                    </div>
-                    <button className='Submit' type='submit'>Add Item</button>
-                    <section className='Current'>
+                <section className='Current'>
                         <h2>Current Order Details</h2>
-                        {this.current()}
+                        {current}
+                    </section>
+                    <h3>Select from menu:</h3>
+                    <section className='item-select'>
+                        {this.getMenuItem()}
                     </section>
                 </form>
-                <div className='button-div'>
-                <button className='finish' onClick={this.finish}>Finish</button>
-                </div>
-                
             </div>
 
         )

@@ -41,3 +41,9 @@ form{
 .container{
     margin: 5px;
 }
+.customer{
+   border: thin solid black;
+}
+.customer-select{
+    text-align: center;
+}

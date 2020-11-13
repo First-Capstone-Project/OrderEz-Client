@@ -25,7 +25,7 @@ class Customer extends Component {
     //Handle Submit
     //
     handleFormSubmit = (event) => {
-        event.preventDefault();
+        event.preventDefault()
         const form = new FormData(event.target)
         const customerID = form.get('customer')
         OrderService.createOrder(customerID)
@@ -35,31 +35,31 @@ class Customer extends Component {
             })
     }
 
-    //Map props to variables and render the Select Items 
-    //
-    getcustomers = () => {
-        return (this.state.customerList).map((customer) => {
-            const id = customer.id
-            const name = customer.name
-            const adress = customer.adress
-            const phone = customer.phone
-            return <option name={id} key={id} value={id}>
-                {name} - {adress} - {phone}
-            </option>
-
+    handleClick = (event) => {
+        console.log(event)
+        OrderService.createOrder(event)
+        .then(res => {
+            console.log(res)
+            this.props.history.push(`/items/${res.order_customer_id}`);
+        })
+    }
+    
+    getCustomers = () => {
+        return(this.state.customerList).map((customer)=>{
+            return <div className='customer'>
+                <h3>{customer.name}</h3>
+                <p>{customer.adress}</p>
+                <p>{customer.phone}</p>
+                <button value={customer.id} onClick={e => this.handleClick(e.target.value)}>Select</button>
+            </div>
         })
     }
 
     render() {
         return (
-            <form onSubmit={this.handleFormSubmit}>
-                <div className='container'>
-                    <select multiple name='customer' className="select-customer">
-                        {this.getcustomers()}
-                    </select>
-                </div>
-                <button className='Submit' type='submit'>Create Order</button>
-            </form>
+            <section className='customer-select'>
+                {this.getCustomers()}
+            </section>
         )
     }
 }

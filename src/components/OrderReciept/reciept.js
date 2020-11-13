@@ -54,9 +54,6 @@ class Reciept extends Component {
                
         })
     }
-    goBack = () => {
-        this.props.history.push('/')
-    }
 
     render() {
         return (
