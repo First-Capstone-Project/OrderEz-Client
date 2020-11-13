@@ -35,3 +35,11 @@ h2{
     font-size: small;
     color: black;
 }
+.container{
+    display: flex;
+}
+.item{
+    margin: 5px;
+    padding: 5px;
+    margin-left: 25px;
+}

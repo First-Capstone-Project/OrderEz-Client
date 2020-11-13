@@ -29,10 +29,10 @@ class Reciept extends Component {
     renderReciept = () => {
         return (this.state.reciept).map((res) => {
             const name = res.item_name
-            return <li key={res.id}>
-                <h2>{name}--{res.type_name}</h2>
-                <h3>{res.item_price}$</h3>
-            </li>
+            return <tr>
+                <td>{name}-{res.type_name}</td>
+                <td>{res.item_price}$</td>
+            </tr>
         })
 
     }
@@ -46,9 +46,10 @@ class Reciept extends Component {
     customer = () => {
         return this.state.customer.map((res)=>{
         return <div>
-            <h1>{res.customer_name}</h1>
-            <h2>{res.customer_adress}</h2>
-            <p>{res.customer_phone}</p>
+            <h1>Customer Info:</h1>
+            <h3>Name: {res.customer_name}</h3>
+            <h3>Adress: {res.customer_adress}</h3>
+            <p>Phone Number: {res.customer_phone}</p>
             </div>
                
         })
@@ -65,14 +66,23 @@ class Reciept extends Component {
                    <Link to={'/customers'}>New Order</Link>
                    <Link to={'/newitem'}>New Item</Link>
                    <Link to={'/newcustomer'}>New Customer</Link>
-            </nav>    
-            <section className='Customer'>
-                <h1>{this.customer()}</h1>
-            </section>    
-            <ul>
+            </nav>
+            <div className='container'>    
+            <section className='item'>
+                {this.customer()}
+            </section>
+            <section className='item'>
+            <h1>Order Info: </h1>    
+            <table>
+                <tr>    
+                <th>Item</th>
+                <th>Price</th>
+                </tr>
                 {this.renderReciept()}
-            </ul>
+            </table>
             <h2>Total: {this.total()}$</h2>
+            </section>
+            </div>
             </div>
         )
     }
