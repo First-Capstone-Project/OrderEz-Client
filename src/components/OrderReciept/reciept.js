@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import OrderService from '../services/order-api-service'
+import Nav from '../../nav/nav'
 class Reciept extends Component {
 
     state = {
@@ -58,12 +59,7 @@ class Reciept extends Component {
     render() {
         return (
             <div>
-            <nav role="navigation">
-                   <Link to={'/'}>Home</Link>
-                   <Link to={'/customers'}>New Order</Link>
-                   <Link to={'/newitem'}>New Item</Link>
-                   <Link to={'/newcustomer'}>New Customer</Link>
-            </nav>
+            <Nav />
             <div className='container'>    
             <section className='item'>
                 {this.customer()}

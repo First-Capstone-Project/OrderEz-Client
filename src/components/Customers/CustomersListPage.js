@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import CustomerListContext from '../Contexts/CustomerListContext'
 import CustomerService from '../services/customer-api-service'
 import Customer from './Customer'
+import Nav from '../../nav/nav'
 
 
 export default class CustomersListPage extends Component {
@@ -27,12 +28,7 @@ export default class CustomersListPage extends Component {
     render() {
         return (
         <section className='CustomerList'>
-            <nav role="navigation">
-                   <Link to={'/'}>Home</Link>
-                   <Link to={'/customers'}>New Order</Link>
-                   <Link to={'/newitem'}>New Item</Link>
-                   <Link to={'/newcustomer'}>New Customer</Link>
-            </nav>
+            <Nav />
             <h2>Customers</h2>
             <form onSubmit={this.handleFormSubmit}>
             <input name='search' id='search' type="text" placeholder="Search.."></input>

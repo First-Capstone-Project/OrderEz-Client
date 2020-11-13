@@ -21,7 +21,7 @@ class Item extends Component {
         this.props.history.push(`/reciept/${this.state.id}`)
     }
 
-    
+
     handleClick = (event) => {
         const customerOrderId = this.state.id
         OrderService.addItem(event, customerOrderId)
@@ -58,13 +58,13 @@ class Item extends Component {
                     <button className='finish' onClick={this.finish}>Finish</button>
                 </div>
                 <section className='Current'>
-                        <h2>Current Order Details</h2>
-                        {current}
-                    </section>
+                    <h2>Current Order Details</h2>
+                    {current}
+                </section>
+                <section className='item-select'>
                     <h3>Select from menu:</h3>
-                    <section className='item-select'>
-                        {this.getMenuItem()}
-                    </section>
+                    {this.getMenuItem()}
+                </section>
             </div>
 
         )

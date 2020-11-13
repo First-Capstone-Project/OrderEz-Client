@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import OrderService from '../services/order-api-service'
+import Nav from '../../nav/nav'
 import './order.css'
 
 class AllOrders extends Component {
@@ -40,12 +41,7 @@ class AllOrders extends Component {
 
     render() {
         return <div>
-            <nav role="navigation">
-                <Link to={'/'}>Home</Link>
-                <Link to={'/customers'}>New Order</Link>
-                <Link to={'/newitem'}>New Item</Link>
-                <Link to={'/newcustomer'}>New Customer</Link>
-            </nav>
+            <Nav />
             <h1>All Active Orders:</h1>
             <table className="center">
                 <tr>

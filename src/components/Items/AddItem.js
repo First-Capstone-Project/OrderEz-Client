@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withRouter} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import ItemService from '../services/item-api-service'
+import Nav from '../../nav/nav'
 
 class AddItem extends Component {
 
@@ -40,12 +41,6 @@ class AddItem extends Component {
 
         return (
             <section>
-                <nav role="navigation">
-                   <Link to={'/'}>Home</Link>
-                   <Link to={'/customers'}>New Order</Link>
-                   <Link to={'/newitem'}>New Item</Link>
-                   <Link to={'/newcustomer'}>New Customer</Link>
-            </nav>
                 <h1>Add Item</h1>
                 <form onSubmit={this.handleFormSubmit}>
                     <div><input required name='name' id='name' type="text" placeholder="Enter new Item Name"></input></div>

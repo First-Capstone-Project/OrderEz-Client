@@ -8,6 +8,8 @@ import Customer from '../Customers/Customer'
 import AddItem from '../Items/AddItem'
 import Reciept from '../OrderReciept/reciept'
 import AllOrders from '../OrderReciept/allorders'
+import CustomerList from '../lists/CustomerList'
+import MenuList from '../lists/MenuList'
 //import CustomerService from '../services/customer-api-service'
 
 class App extends Component {
@@ -50,7 +52,17 @@ class App extends Component {
         path="/reciept/:reciept_id"
         component={Reciept}
         />
+
+        <Route 
+        path='/customerlist'
+        component={CustomerList}
+        />
         
+        <Route 
+        path='/menulist'
+        component={MenuList}
+        />
+  
       </div>
     )
   }
