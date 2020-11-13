@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import { withRouter} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import ItemService from '../services/item-api-service'
 
-export default class AddItem extends Component {
+class AddItem extends Component {
 
     state = {
        types: [],
@@ -25,7 +26,7 @@ export default class AddItem extends Component {
         const typeId = form.get('type')
 
         ItemService.insertItem(name, price, typeId)
-        console.log('New Item Added')
+        .then(this.props.history.push('/'))
     }
     
 
@@ -60,3 +61,4 @@ export default class AddItem extends Component {
     }
 }
 
+export default withRouter(AddItem)

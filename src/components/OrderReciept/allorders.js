@@ -1,50 +1,53 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import OrderService from '../services/order-api-service'
 import './order.css'
 
-class AllOrders extends Component{
-    
+class AllOrders extends Component {
+
     state = {
         active: []
     }
 
-    componentDidMount(){
+    componentDidMount() {
         OrderService.getAll()
-        .then(res=>{
-            this.setState({
-                active: res.rows
+            .then(res => {
+                this.setState({
+                    active: res.rows
+                })
             })
+    }
+
+    renderList = () => {
+        return this.state.active.map((order) => {
+            return <tr>
+                <td><Link to={`/reciept/${order.customer_id_fk}`}>
+                    {order.customer_name}
+                </Link></td>
+                <td>{order.customer_adress}</td>
+                <td>{order.sum}$</td>
+            </tr>
         })
     }
 
-    renderlist = () => {
-        return this.state.active.map((order)=>{
-            return <li className='listitem'>
-                <span>
-                Order N#{order.customer_id_fk}
-                <Link to={`/reciept/${order.customer_id_fk}`}>
-                    <h2>{order.customer_name}</h2>
-                </Link>
-                </span>
-                <h4>Total: {order.sum}$</h4>
-            </li>
-        })
-    }
 
-
-    render(){
+    render() {
         return <div>
-           <nav role="navigation">
-                   <Link to={'/'}>Home</Link>
-                   <Link to={'/customers'}>New Order</Link>
-                   <Link to={'/newitem'}>New Item</Link>
-                   <Link to={'/newcustomer'}>New Customer</Link>
+            <nav role="navigation">
+                <Link to={'/'}>Home</Link>
+                <Link to={'/customers'}>New Order</Link>
+                <Link to={'/newitem'}>New Item</Link>
+                <Link to={'/newcustomer'}>New Customer</Link>
             </nav>
-            <ol>
-            {this.renderlist()}
-            </ol>
+            <table className="center">
+                <tr>
+                    <th>Name</th>
+                    <th>Adress</th>
+                    <th>Total</th>
+                </tr>
+                {this.renderList()}
+            </table>    
         </div>
     }
 }
