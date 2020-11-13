@@ -22,11 +22,12 @@ class Customer extends Component {
             })
     }
 
+    //Handle Submit
+    //
     handleFormSubmit = (event) => {
         event.preventDefault();
         const form = new FormData(event.target)
         const customerID = form.get('customer')
-        console.log(customerID)
         OrderService.createOrder(customerID)
             .then(res => {
                 console.log(res)

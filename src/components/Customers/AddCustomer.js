@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import CustomerService from '../services/customer-api-service'
 class AddCustomer extends Component {
 
+    //Handle Submit
+    //
     handleFormSubmit = (event) => {
         event.preventDefault();
         const form = new FormData(event.target)

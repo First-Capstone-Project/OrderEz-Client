@@ -22,6 +22,7 @@ class AllOrders extends Component {
     renderList = () => {
         return this.state.active.map((order) => {
             return <tr>
+                <td>{order.customer_id_fk}</td>
                 <td><Link to={`/reciept/${order.customer_id_fk}`}>
                     {order.customer_name}
                 </Link></td>
@@ -40,8 +41,10 @@ class AllOrders extends Component {
                 <Link to={'/newitem'}>New Item</Link>
                 <Link to={'/newcustomer'}>New Customer</Link>
             </nav>
+            <h1>All Active Orders:</h1>
             <table className="center">
                 <tr>
+                    <th>Order #</th>
                     <th>Name</th>
                     <th>Adress</th>
                     <th>Total</th>
