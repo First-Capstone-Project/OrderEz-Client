@@ -1,4 +1,5 @@
 import React,{Component} from 'react'
+import {Link} from 'react-router-dom'
 import CustomerService from '../services/customer-api-service'
 export default class AddCustomer extends Component{
 
@@ -16,6 +17,12 @@ export default class AddCustomer extends Component{
     render(){
         return(
             <section>
+            <nav role="navigation">
+                   <Link to={'/'}>Home</Link>
+                   <Link to={'/customers'}>New Order</Link>
+                   <Link to={'/newitem'}>New Item</Link>
+                   <Link to={'/newcustomer'}>New Customer</Link>
+            </nav>
             <h1>Add Customer</h1>
             <form onSubmit={this.handleFormSubmit}>
             <div><input required name='name' id='name' type="text" placeholder="Enter Name"></input></div>

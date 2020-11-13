@@ -7,6 +7,7 @@ import CustomersListPage from '../Customers/CustomersListPage'
 import Customer from '../Customers/Customer'
 import AddItem from '../Items/AddItem'
 import Reciept from '../OrderReciept/reciept'
+import AllOrders from '../OrderReciept/allorders'
 //import CustomerService from '../services/customer-api-service'
 
 class App extends Component {
@@ -22,6 +23,11 @@ class App extends Component {
         <Route 
         exact
         path="/"
+        component={AllOrders}
+        />
+        
+        <Route 
+        path="/customers"
         component={CustomerListPage}
         />
 
@@ -33,6 +39,11 @@ class App extends Component {
         <Route 
         path="/newitem"
         component={AddItem}
+        />
+
+        <Route 
+        path="/newcustomer"
+        component={AddCustomer}
         />
 
         <Route 

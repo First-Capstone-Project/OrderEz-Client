@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import OrderService from '../services/order-api-service'
 class Reciept extends Component {
@@ -59,6 +60,12 @@ class Reciept extends Component {
     render() {
         return (
             <div>
+            <nav role="navigation">
+                   <Link to={'/'}>Home</Link>
+                   <Link to={'/customers'}>New Order</Link>
+                   <Link to={'/newitem'}>New Item</Link>
+                   <Link to={'/newcustomer'}>New Customer</Link>
+            </nav>    
             <section className='Customer'>
                 <h1>{this.customer()}</h1>
             </section>    
@@ -66,7 +73,6 @@ class Reciept extends Component {
                 {this.renderReciept()}
             </ul>
             <h2>Total: {this.total()}$</h2>
-            <button onClick={this.goBack}>Done</button>
             </div>
         )
     }

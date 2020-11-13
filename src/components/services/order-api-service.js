@@ -50,6 +50,14 @@ const OrderService = {
               : res.json()
           )   
     },
+    getAll(){
+        return fetch(`${config.API_ENDPOINT}/active`)
+        .then(res => 
+            (!res.ok)
+              ? res.json().then(e => Promise.reject(e))
+              : res.json()
+          ) 
+    },
 }
 
 export default OrderService
