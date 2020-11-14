@@ -17,7 +17,11 @@ class CustomerList extends Component {
                     customerList
                 })
             })
-            console.log(this.state.customerList)
+    }
+
+    handleDelete = (id) => {
+        CustomerService.deleteCustomer(id)
+        .then(this.props.history.push('/'))
     }
 
     getCustomers = () => {
@@ -28,9 +32,10 @@ class CustomerList extends Component {
         .map((customer)=>{
             return <tr>
                 <td>{customer.id}</td>
-                <td>{customer.name}</td>
+                <td><Link to={`edit/${customer.id}`}>{customer.name}</Link></td>
                 <td>{customer.adress}</td>
                 <td>{customer.phone}</td>
+                <td><button value={customer.id} onClick={e => this.handleDelete(e.target.value)}>Delete</button></td>
             </tr>
         })
     }
@@ -46,6 +51,7 @@ class CustomerList extends Component {
                     <th>Name</th>
                     <th>Adress</th>
                     <th>Phone</th>
+                    <th>Delete</th>
                 </tr>
                 {this.getCustomers()}
             </table>

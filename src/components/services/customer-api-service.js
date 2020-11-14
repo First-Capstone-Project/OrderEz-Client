@@ -33,7 +33,28 @@ const CustomerService = {
             (!res.ok)
               ? res.json().then(e => Promise.reject(e))
               : res.json()
-          )
+        )
+    },
+    updateCustomer(customer_name,customer_adress,customer_phone,customer_id){
+        return fetch(`${config.API_ENDPOINT}/customers/${customer_id}`,{
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                customer_name,
+                customer_adress,
+                customer_phone,
+            }),
+        })
+    },
+    deleteCustomer(customer_id){
+        return fetch(`${config.API_ENDPOINT}/customers/${customer_id}`,{
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+            },
+        })
     }
 }
 

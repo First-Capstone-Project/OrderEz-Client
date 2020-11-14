@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { Link } from 'react-router-dom'
 import Nav from '../../nav/nav'
 import CustomerService from '../services/customer-api-service'
 
@@ -15,7 +14,6 @@ class EditCustomer extends Component {
     
     componentDidMount() {
         let id = this.props.match.params.customer_id
-        console.log(id)
         CustomerService.getCustomer(id)
         .then(contact => {
             this.setState({
@@ -43,12 +41,15 @@ class EditCustomer extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-
+        let customer_id = this.props.match.params.customer_id
+        CustomerService.updateCustomer(this.state.name,this.state.adress,this.state.phone,customer_id)
+        .then(this.props.history.push('/'))
     }
 
     render() {
         return (
             <div>
+            <Nav />
             <form onSubmit={this.handleSubmit}>
                 <div>
                 <label>
@@ -91,7 +92,6 @@ class EditCustomer extends Component {
                 </div>
                 <div><input type="submit" value="Submit" /></div>
             </form>
-            <button>Delete</button>
             </div>
         )
     }
