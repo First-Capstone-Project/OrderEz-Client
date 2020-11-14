@@ -62,7 +62,7 @@ const ItemService = {
                 'content-type': 'application/json',
             },
         })
-    }
+    },
     
 }
 
