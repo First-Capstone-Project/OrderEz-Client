@@ -11,6 +11,7 @@ import AllOrders from '../OrderReciept/allorders'
 import CustomerList from '../lists/CustomerList'
 import MenuList from '../lists/MenuList'
 import EditCustomer from '../Edit/EditCustomer'
+import EditItem from '../Edit/EditItem'
 //import CustomerService from '../services/customer-api-service'
 
 class App extends Component {
@@ -38,6 +39,11 @@ class App extends Component {
         <Route 
         path="/edit/:customer_id"
         component={EditCustomer}
+        />
+
+        <Route 
+        path="/editi/:item_id"
+        component={EditItem}
         />
 
         <Route 

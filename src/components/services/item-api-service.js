@@ -9,6 +9,14 @@ const ItemService = {
                     : res.json()
             )
     },
+    getItem(id){
+        return fetch(`${config.API_ENDPOINT}/items/${id}`)
+        .then(res => 
+            (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : res.json()
+        )
+    },
     getTypes(){
         return fetch(`${config.API_ENDPOINT}/types`)
         .then(res => 
@@ -35,6 +43,26 @@ const ItemService = {
               : res.json()
           )
     },
+    updateItem(item_name,item_price,item_id){
+        return fetch(`${config.API_ENDPOINT}/items/${item_id}`,{
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                item_name,
+                item_price,
+            }),
+        }) 
+    },
+    deleteItem(item_id){
+        return fetch(`${config.API_ENDPOINT}/items/${item_id}`,{
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+            },
+        })
+    }
     
 }
 

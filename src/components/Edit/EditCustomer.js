@@ -17,7 +17,10 @@ class EditCustomer extends Component {
         CustomerService.getCustomer(id)
         .then(contact => {
             this.setState({
-                customer: contact
+                customer: contact,
+                name: contact.name,
+                adress: contact.adress,
+                phone: contact.phone
             })
         })
         

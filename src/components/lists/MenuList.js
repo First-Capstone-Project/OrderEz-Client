@@ -20,18 +20,24 @@ class MenuList extends Component {
             })
         })
     }
+    
+    handleDelete = (id) => {
+        ItemService.deleteItem(id)
+        .then(this.props.history.push('/'))
+    }
 
     getMenuItem = () => {
         return (this.state.itemList)
         .sort((item1,item2)=>{
-            return(item1.type-item2.type)
+            return(item1.id-item2.id)
         })
         .map((item) => {
             return <tr>
             <td>{item.id}</td>
-            <td>{item.name}</td>
+            <td><Link to={`editi/${item.id}`}>{item.name}</Link></td>
             <td>{item.type}</td>
             <td>{item.price}$</td>
+            <td><button value={item.id} onClick={e => this.handleDelete(e.target.value)}>Delete</button></td>
         </tr>
         })
     }
@@ -47,6 +53,7 @@ class MenuList extends Component {
                     <th>Name</th>
                     <th>Type</th>
                     <th>Price</th>
+                    <th>Delete</th>
                 </tr>
                 {this.getMenuItem()}
             </table>
