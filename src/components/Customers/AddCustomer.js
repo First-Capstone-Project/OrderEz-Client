@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { Link } from 'react-router-dom'
 import CustomerService from '../services/customer-api-service'
-import Nav from '../../nav/nav'
 class AddCustomer extends Component {
 
     //Handle Submit

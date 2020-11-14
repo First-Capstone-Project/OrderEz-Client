@@ -9,6 +9,14 @@ const CustomerService = {
                   : res.json()
               )
     },
+    getCustomer(id){
+        return fetch(`${config.API_ENDPOINT}/customers/${id}`)
+        .then(res =>
+                (!res.ok)
+                  ? res.json().then(e => Promise.reject(e))
+                  : res.json()
+              )
+    },
     insertCustomer(customer_name,customer_adress,customer_phone){
         return fetch(`${config.API_ENDPOINT}/customers`,{
             method: 'POST',

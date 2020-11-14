@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter} from 'react-router-dom'
-import {Link} from 'react-router-dom'
 import ItemService from '../services/item-api-service'
-import Nav from '../../nav/nav'
+
 
 class AddItem extends Component {
 
