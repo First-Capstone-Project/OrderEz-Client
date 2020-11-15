@@ -79,6 +79,7 @@ class Reciept extends Component {
             </div>
         )
     }
+    
 }
 
 export default withRouter(Reciept)
