@@ -62,10 +62,7 @@ const ItemService = {
                 'content-type': 'application/json',
             },
         })
-    },
-
-    //ajdeee
-    
+    },  
 }
 
 export default ItemService
