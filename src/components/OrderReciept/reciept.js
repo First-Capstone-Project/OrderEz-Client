@@ -79,6 +79,7 @@ class Reciept extends Component {
             </div>
         )
     }
+    //ajdee
 }
 
 export default withRouter(Reciept)
