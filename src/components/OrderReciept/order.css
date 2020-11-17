@@ -31,10 +31,6 @@ a{
 h4{
     text-align: center;   
 }
-h2{
-    font-size: small;
-    color: black;
-}
 .container{
     display: flex;
     flex-direction: column;
@@ -49,9 +45,3 @@ h2{
     width: 450px;
     border-collapse: collapse;
 }
-
-
-
-
-
-

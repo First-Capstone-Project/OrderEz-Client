@@ -27,15 +27,15 @@ class CustomerList extends Component {
     getCustomers = () => {
         return(this.state.customerList)
         .sort((customer1,customer2)=>{
-            return (customer1.id-customer2.id)
+            return (customer1.customer_id-customer2.customer_id)
         })
-        .map((customer)=>{
-            return <tr>
-                <td>{customer.id}</td>
-                <td><Link to={`edit/${customer.id}`}>{customer.name}</Link></td>
-                <td>{customer.adress}</td>
-                <td>{customer.phone}</td>
-                <td><button className='btn form-btn' value={customer.id} onClick={e => this.handleDelete(e.target.value)}>Delete</button></td>
+        .map((customer,index)=>{
+            return <tr key={index}>
+                <td>{customer.customer_id}</td>
+                <td><Link to={`edit/${customer.customer_id}`}>{customer.customer_name}</Link></td>
+                <td>{customer.customer_adress}</td>
+                <td>{customer.customer_phone}</td>
+                <td><button className='btn form-btn' value={customer.customer_id} onClick={e => this.handleDelete(e.target.value)}>Delete</button></td>
             </tr>
         })
     }

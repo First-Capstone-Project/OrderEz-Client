@@ -18,9 +18,9 @@ class EditCustomer extends Component {
         .then(contact => {
             this.setState({
                 customer: contact,
-                name: contact.name,
-                adress: contact.adress,
-                phone: contact.phone
+                name: contact.customer_name,
+                adress: contact.customer_adress,
+                phone: contact.customer_phone
             })
         })
         
@@ -53,8 +53,9 @@ class EditCustomer extends Component {
         return (
             <div>
             <Nav />
+            <div className='box'>
             <form onSubmit={this.handleSubmit}>
-                <div>
+                <div className='boxbody'>
                 <label>
                     Name:
                     <input 
@@ -67,7 +68,7 @@ class EditCustomer extends Component {
                     />
                 </label>
                 </div>
-                <div>
+                <div className='boxbody'>
                 <label>
                     Adress:
                     <input 
@@ -80,9 +81,9 @@ class EditCustomer extends Component {
                     />
                 </label>
                 </div>
-                <div>
+                <div className='boxbody'>
                 <label>
-                    Pgone Number:
+                    Phone Number:
                     <input 
                     placeholder={this.state.customer.phone}
                     value={this.state.phone}
@@ -93,8 +94,11 @@ class EditCustomer extends Component {
                     />
                 </label>
                 </div>
-                <div><input type="submit" value="Submit" /></div>
+                <div className='boxfooter'>
+                <button className='btn' type='submit'>Submit</button>
+                </div>
             </form>
+            </div>
             </div>
         )
     }

@@ -28,9 +28,9 @@ class Reciept extends Component {
             })    
     }
     renderReciept = () => {
-        return (this.state.reciept).map((res) => {
+        return (this.state.reciept).map((res,index) => {
             const name = res.item_name
-            return <tr>
+            return <tr key={index}>
                 <td>{name}-{res.type_name}</td>
                 <td>{res.item_price}$</td>
             </tr>
@@ -45,12 +45,19 @@ class Reciept extends Component {
         return total
     }
     customer = () => {
-        return this.state.customer.map((res)=>{
-        return <div>
-            <h1>Customer Info:</h1>
-            <h3>Name: {res.customer_name}</h3>
-            <h3>Adress: {res.customer_adress}</h3>
+        return this.state.customer.map((res,index)=>{
+        return <div key={index} className='box'>
+            <div className='boxheader'> 
+            <div className='boxtitle'>   
+            <h1>Customer Info</h1>
+            </div>
+            </div>
+
+            <div className='boxbody'>
+            <h2>Name: {res.customer_name}</h2>
+            <h2>Adress: {res.customer_adress}</h2>
             <p>Phone Number: {res.customer_phone}</p>
+            </div>
             </div>
                
         })
@@ -64,9 +71,15 @@ class Reciept extends Component {
             <section className='item'>
                 {this.customer()}
             </section>
+
             <section className='item'>
-            <h1>Order Info: </h1>    
-            <table className="comicGreen">
+            <div className='boxheader'> 
+            <div className='boxtitle'>   
+            <h1>Order Info</h1>
+            </div>
+            </div>   
+            <table className="table">
+                <tbody>
                 <tr>    
                 <th>Item</th>
                 <th>Price</th>
@@ -76,6 +89,7 @@ class Reciept extends Component {
                     <th>Total</th>
                     <th>{this.total()}$</th>
                 </tr>
+                </tbody>
             </table>
             </section>
             </div>

@@ -26,15 +26,15 @@ class AllOrders extends Component {
         .sort((order1,order2)=>{
             return (order1.customer_id_fk-order2.customer_id_fk)
         })
-        .map((order) => {
-            return <tr>
+        .map((order,index) => {
+            return <tr key={index}>
                 <td>{order.customer_id_fk}</td>
-                <td>{order.order_date}</td>
+                <td>{format(new Date(order.order_date),'MM/dd/yyyy  hh:mm:ss a')}</td>
                 <td><Link to={`/reciept/${order.customer_id_fk}`}>
                     {order.customer_name}
                 </Link></td>
                 <td>{order.customer_adress}</td>
-                <td>{order.sum}$</td>
+                <td>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(order.sum)}</td>
             </tr>
         })
         

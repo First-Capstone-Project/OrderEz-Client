@@ -9,9 +9,6 @@ h1{
 	font-size: 14px;
 	color: white;
 }
-ul{
-	margin: 0;
-}
 .finish{
 	height: 30px;
 	width: 100px;
@@ -33,7 +30,7 @@ ul{
 	display: none;
 }
 .expand{
-	background-color: #4CAF50; 
+	background-color: #3c8dbc; 
 	border: none;
 	color: white;
 	margin: 2px;
@@ -47,7 +44,7 @@ ul{
 	height: 50px;
 }
 .itembtn{
-	background-color: #6de471; 
+	background-color:#57a7d5; 
 	border: none;
 	color: white;
 	margin: 2px;
@@ -59,4 +56,35 @@ ul{
 	border-radius: 12px;
 	width: 250px;
 	height: 50px;
+}
+.btngreen{
+border-collapse: collapse;
+border-spacing: 0;
+box-sizing: border-box;
+font: inherit;
+margin: 0;
+overflow: visible;
+text-transform: none;
+font-family: inherit;
+margin-bottom: 0;
+font-weight: 400;
+text-align: center;
+white-space: nowrap;
+vertical-align: middle;
+touch-action: manipulation;
+cursor: pointer;
+background-image: none;
+user-select: none;
+padding: 10px 16px;
+font-size: 18px;
+line-height: 1.3333333;
+display: block;
+width: 100%;
+border-radius: 3px;
+box-shadow: none;
+border: 1px solid transparent;
+text-decoration: none;
+color: #fff;
+border-color: #398439;
+background-color: #008d4c;
 }

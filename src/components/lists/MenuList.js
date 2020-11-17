@@ -31,12 +31,12 @@ class MenuList extends Component {
         .sort((item1,item2)=>{
             return(item1.id-item2.id)
         })
-        .map((item) => {
-            return <tr>
+        .map((item,index) => {
+            return <tr key={index}>
             <td>{item.id}</td>
             <td><Link to={`editi/${item.id}`}>{item.name}</Link></td>
             <td>{item.type}</td>
-            <td>{item.price}$</td>
+            <td>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(item.price)}</td>
             <td><button className='btn' value={item.id} onClick={e => this.handleDelete(e.target.value)}>Delete</button></td>
         </tr>
         })

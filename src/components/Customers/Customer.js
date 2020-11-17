@@ -22,17 +22,22 @@ class Customer extends Component {
             })
     }
 
-    //Handle Submit
+       //Search button form
     //
     handleFormSubmit = (event) => {
-        event.preventDefault()
+        event.preventDefault();
         const form = new FormData(event.target)
-        const customerID = form.get('customer')
-        OrderService.createOrder(customerID)
-            .then(res => {
-                this.props.history.push(`/items/${res.order_customer_id}`);
-            })
+        const search = form.get('search')
+       CustomerService.filter(search)
+       .then(result => {
+           this.setState({
+               customerList: result.rows
+           })
+       })
+       
+
     }
+    
 
     handleClick = (event) => {
         console.log(event)
@@ -43,21 +48,53 @@ class Customer extends Component {
     }
     
     getCustomers = () => {
-        return(this.state.customerList).map((customer)=>{
-            return <div className='customer'>
-                <h3>{customer.name}</h3>
-                <p>{customer.adress}</p>
-                <p>{customer.phone}</p>
-                <button value={customer.id} onClick={e => this.handleClick(e.target.value)}>Select</button>
+        return(this.state.customerList).map((customer,index)=>{
+            return <div key={index} className='box'>
+                <div className='boxheader'>
+                <div className='boxtitle'>   
+                <h3>{customer.customer_name}</h3>
+                </div>
+                </div>
+                <div className='boxbody'>
+                <p>{customer.customer_adress}</p>
+                <p>{customer.customer_phone}</p>
+                </div>
+                <div className='boxfooter'>
+                <button className='btn' value={customer.customer_id} onClick={e => this.handleClick(e.target.value)}>Select</button>
+                </div>
             </div>
         })
     }
 
+   
+
     render() {
         return (
+            <div>
+            <div className='box'>
+
+                    <div className='boxheader'>
+                        <div className='boxtitle'>
+                            <h1>Enter Customer's Phone Number</h1>
+                        </div>
+                    </div>
+
+                    <form onSubmit={this.handleFormSubmit}>
+                        <div className='boxbody'>
+                            <div className='formgroup'>
+                                <input required name='search' id='search' type="text" placeholder="Search.."></input>
+                            </div>
+                        </div>
+                        <div className='boxfooter'>
+                        <button className='btn' type='submit'>Search</button>
+                        </div>
+                    </form>
+
+                </div>    
             <section className='customer-select'>
                 {this.getCustomers()}
             </section>
+            </div>
         )
     }
 }
