@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { format } from "date-fns";
 import { withRouter } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import OrderService from '../services/order-api-service'
@@ -28,6 +29,7 @@ class AllOrders extends Component {
         .map((order) => {
             return <tr>
                 <td>{order.customer_id_fk}</td>
+                <td>{order.order_date}</td>
                 <td><Link to={`/reciept/${order.customer_id_fk}`}>
                     {order.customer_name}
                 </Link></td>
@@ -42,16 +44,27 @@ class AllOrders extends Component {
     render() {
         return <div>
             <Nav />
+            <div className='box'>
+            <div className='boxheader'> 
+            <div className='boxtitle'>   
             <h1>All Active Orders:</h1>
-            <table className="center">
+            </div>
+            </div>
+            <div className='boxbody'>
+            <table className="table">
+                <tbody>
                 <tr>
                     <th>Order #</th>
+                    <th>Date Ordered</th>
                     <th>Name</th>
                     <th>Adress</th>
                     <th>Total</th>
                 </tr>
                 {this.renderList()}
-            </table>    
+                </tbody>
+            </table>
+            </div>
+            </div>    
         </div>
     }
 }

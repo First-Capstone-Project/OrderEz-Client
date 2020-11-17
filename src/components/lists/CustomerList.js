@@ -35,7 +35,7 @@ class CustomerList extends Component {
                 <td><Link to={`edit/${customer.id}`}>{customer.name}</Link></td>
                 <td>{customer.adress}</td>
                 <td>{customer.phone}</td>
-                <td><button value={customer.id} onClick={e => this.handleDelete(e.target.value)}>Delete</button></td>
+                <td><button className='btn form-btn' value={customer.id} onClick={e => this.handleDelete(e.target.value)}>Delete</button></td>
             </tr>
         })
     }
@@ -44,8 +44,17 @@ class CustomerList extends Component {
         return(
         <section>
            <Nav />
-           <h1>All Customers: </h1>
-           <table className="center">
+           <AddCustomer /> 
+           <div className='box'>
+           
+           <div className='boxheader'>    
+           <div className='boxtitle'>
+           <h1>Customers</h1>
+           </div>
+           </div>
+           <div className='boxbody no-padding'>
+           <table className="table">
+                <tbody>
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
@@ -54,8 +63,11 @@ class CustomerList extends Component {
                     <th>Delete</th>
                 </tr>
                 {this.getCustomers()}
+                </tbody>
             </table>
-            <AddCustomer />   
+            </div>
+
+            </div>  
         </section>
         )
     }

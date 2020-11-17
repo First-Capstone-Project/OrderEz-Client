@@ -27,7 +27,6 @@ export default class ItemListPage extends Component {
     render(){
         return(
         <section className='Item-List'>
-        <h2>Add Item to order</h2>
         <Item
         items = {this.state.itemList}
         />

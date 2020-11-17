@@ -30,7 +30,6 @@ class Customer extends Component {
         const customerID = form.get('customer')
         OrderService.createOrder(customerID)
             .then(res => {
-                console.log(res)
                 this.props.history.push(`/items/${res.order_customer_id}`);
             })
     }
@@ -39,7 +38,6 @@ class Customer extends Component {
         console.log(event)
         OrderService.createOrder(event)
         .then(res => {
-            console.log(res)
             this.props.history.push(`/items/${res.order_customer_id}`);
         })
     }

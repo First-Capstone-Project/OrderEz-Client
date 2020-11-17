@@ -37,9 +37,21 @@ h2{
 }
 .container{
     display: flex;
+    flex-direction: column;
 }
 .item{
     margin: 5px;
     padding: 5px;
     margin-left: 25px;
+    text-align: center;
 }
+.all{
+    width: 450px;
+    border-collapse: collapse;
+}
+
+
+
+
+
+

@@ -37,7 +37,7 @@ class MenuList extends Component {
             <td><Link to={`editi/${item.id}`}>{item.name}</Link></td>
             <td>{item.type}</td>
             <td>{item.price}$</td>
-            <td><button value={item.id} onClick={e => this.handleDelete(e.target.value)}>Delete</button></td>
+            <td><button className='btn' value={item.id} onClick={e => this.handleDelete(e.target.value)}>Delete</button></td>
         </tr>
         })
     }
@@ -46,8 +46,16 @@ class MenuList extends Component {
         return(
             <section>
            <Nav />
+           <AddItem />
+           <div className='box'>
+           <div className='boxheader'>
+           <div className='boxtitle'>    
            <h1>Menu: </h1>
-           <table className="center">
+           </div>
+           </div>
+           <div className='boxbody'>
+           <table className="table">
+                <tbody>
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
@@ -56,8 +64,11 @@ class MenuList extends Component {
                     <th>Delete</th>
                 </tr>
                 {this.getMenuItem()}
+                </tbody>
             </table>
-            <AddItem />
+            </div>
+            </div>
+            
         </section>
         )
     }

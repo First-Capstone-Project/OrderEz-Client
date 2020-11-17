@@ -40,16 +40,35 @@ class AddItem extends Component {
 
         return (
             <section>
+                <div className='box'>
+                
+                <div className='boxheader'>
+                <div className='boxtitle'>
                 <h1>Add Item</h1>
+                </div>
+                </div>
+                
                 <form onSubmit={this.handleFormSubmit}>
-                    <div><input required name='name' id='name' type="text" placeholder="Enter new Item Name"></input></div>
-                    <div><input required name='price' id='price' type="text" placeholder="Enter Price of new Item"></input></div>
-                    <p>Select Type</p>
-                    <select name='type' className="select-type">
+                    <div className='boxbody'>
+
+                    <div className='formgroup'><input required name='name' id='name' type="text" placeholder="Enter new Item Name"></input></div>
+                    <div className='formgroup'><input required name='price' id='price' type="text" placeholder="Enter Price of new Item"></input></div>
+                    
+                    <div className='formgroup'>
+                    <div><label>Select Type</label></div>
+                    <select className='formcontrol' name='type' className="select-type">
                         {options}
                     </select>
-                    <div><button className='Submit' type='submit'>Add New Item</button></div>
+                    </div>
+
+                    </div>
+                    
+                    <div className='boxfooter'>
+                        <button className='btn' type='submit'>Add New Item</button>
+                    </div>
                 </form>
+
+                </div>
             </section>
         )
     }

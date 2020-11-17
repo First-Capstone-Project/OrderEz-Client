@@ -66,20 +66,23 @@ class Reciept extends Component {
             </section>
             <section className='item'>
             <h1>Order Info: </h1>    
-            <table>
+            <table className="comicGreen">
                 <tr>    
                 <th>Item</th>
                 <th>Price</th>
                 </tr>
                 {this.renderReciept()}
+                <tr>
+                    <th>Total</th>
+                    <th>{this.total()}$</th>
+                </tr>
             </table>
-            <h2>Total: {this.total()}$</h2>
             </section>
             </div>
             </div>
         )
     }
-    
+
 }
 
 export default withRouter(Reciept)
