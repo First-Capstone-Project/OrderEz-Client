@@ -56,7 +56,7 @@ class AddItem extends Component {
                     <div className='boxbody'>
 
                     <div className='formgroup'><input required name='name' id='name' type="text" placeholder="Enter new Item Name"></input></div>
-                    <div className='formgroup'><input required name='price' id='price' type="text" placeholder="Enter Price of new Item"></input></div>
+                    <div className='formgroup'><input required name='price' id='price' type="text" pattern="[0-9]*" placeholder="Enter Price of new Item"></input></div>
                     
                     <div className='formgroup'>
                     <div className='boxbody'><label>Select Type</label></div>

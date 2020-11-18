@@ -33,7 +33,7 @@ class AddCustomer extends Component {
                     <div className='boxbody'>
                     <div className='formgroup'><input required name='name' id='name' type="text" placeholder="Enter Name"></input></div>
                     <div className='formgroup'><input required name='adress' id='adress' type="text" placeholder="Enter Adress"></input></div>
-                    <div className='formgroup'><input required name='phone' id='phone' type="text" placeholder="Enter Phone Number" data-inputmask='"mask" : "(999) 999-9999"' ></input></div>
+                    <div className='formgroup'><input required name='phone' id='phone' type="text" pattern="[0-9]*" placeholder="Enter Phone Number"></input></div>
                     </div>
                     
                     <div className='boxfooter'>
