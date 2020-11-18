@@ -12,6 +12,8 @@ class EditCustomer extends Component {
         phone: ''
     }
     
+    //Api call to get customer info
+    //
     componentDidMount() {
         let id = this.props.match.params.customer_id
         CustomerService.getCustomer(id)
@@ -26,6 +28,8 @@ class EditCustomer extends Component {
         
     }
 
+    //Update state to current form value
+    //
     handleNameChange = event => {
         this.setState({
             name: event.target.value
@@ -42,6 +46,9 @@ class EditCustomer extends Component {
         })
     }
 
+
+    //Handle Submit
+    //
     handleSubmit = event => {
         event.preventDefault();
         let customer_id = this.props.match.params.customer_id

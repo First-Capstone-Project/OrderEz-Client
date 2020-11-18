@@ -9,6 +9,8 @@ class AddItem extends Component {
        types: [],
     }
 
+    //Api call to get types for select
+    //
     componentDidMount(){
         ItemService.getTypes()
         .then(types => {
@@ -18,6 +20,8 @@ class AddItem extends Component {
         })
     }
 
+    //Handle Submit
+    //
     handleFormSubmit = (event) => {
         event.preventDefault();
         const form = new FormData(event.target)

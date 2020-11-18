@@ -1,6 +1,8 @@
 import config from '../../config'
 
 const CustomerService = {
+    //GET all Customers
+    //
     getCustomers(){
         return fetch(`${config.API_ENDPOINT}/customers`)
         .then(res =>
@@ -9,6 +11,8 @@ const CustomerService = {
                   : res.json()
               )
     },
+    //GET customer from ID
+    //
     getCustomer(id){
         return fetch(`${config.API_ENDPOINT}/customers/${id}`)
         .then(res =>
@@ -17,6 +21,8 @@ const CustomerService = {
                   : res.json()
               )
     },
+    //POST request for customer
+    //
     insertCustomer(customer_name,customer_adress,customer_phone){
         return fetch(`${config.API_ENDPOINT}/customers`,{
             method: 'POST',
@@ -35,6 +41,8 @@ const CustomerService = {
               : res.json()
         )
     },
+    //PATCH request for customer
+    //
     updateCustomer(customer_name,customer_adress,customer_phone,customer_id){
         return fetch(`${config.API_ENDPOINT}/customers/${customer_id}`,{
             method: 'PATCH',
@@ -48,6 +56,8 @@ const CustomerService = {
             }),
         })
     },
+    //DELETE request for customer
+    //
     deleteCustomer(customer_id){
         return fetch(`${config.API_ENDPOINT}/customers/${customer_id}`,{
             method: 'DELETE',
@@ -56,6 +66,8 @@ const CustomerService = {
             },
         })
     },
+    //GET request for filtered customers
+    //
     filter(num){
         return fetch(`${config.API_ENDPOINT}/filter/${num}`)
         .then(res =>

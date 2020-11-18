@@ -3,8 +3,6 @@ import { Route , BrowserRouter as Router } from 'react-router-dom'
 import CustomerListPage from '../Customers/CustomersListPage'
 import AddCustomer from '../Customers/AddCustomer'
 import ItemListPage from '../Items/ItemListPage'
-import CustomersListPage from '../Customers/CustomersListPage'
-import Customer from '../Customers/Customer'
 import AddItem from '../Items/AddItem'
 import Reciept from '../OrderReciept/reciept'
 import AllOrders from '../OrderReciept/allorders'
@@ -12,7 +10,7 @@ import CustomerList from '../lists/CustomerList'
 import MenuList from '../lists/MenuList'
 import EditCustomer from '../Edit/EditCustomer'
 import EditItem from '../Edit/EditItem'
-//import CustomerService from '../services/customer-api-service'
+
 
 class App extends Component {
 

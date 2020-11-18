@@ -12,6 +12,8 @@ class Edititem extends Component {
         price: 0,
     }
 
+    //Get item info
+    //
     componentDidMount() {
         let id = this.props.match.params.item_id
         ItemService.getItem(id)
@@ -24,6 +26,8 @@ class Edititem extends Component {
             })
     }
 
+    //Update state to current form value
+    //
     handleNameChange = event => {
         this.setState({
             name: event.target.value

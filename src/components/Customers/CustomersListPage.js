@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import CustomerListContext from '../Contexts/CustomerListContext'
 import CustomerService from '../services/customer-api-service'
 import Customer from './Customer'
 import Nav from '../../nav/nav'
@@ -8,14 +6,29 @@ import Nav from '../../nav/nav'
 
 export default class CustomersListPage extends Component {
    
+    state = {
+        customerList: []
+    }
+
+    //API call to server to get Customers
+    //
+    componentDidMount(){
+        CustomerService.getCustomers()
+            .then(customerList => {
+                this.setState({
+                    customerList
+                })
+            })
+    }
 
     //Render Search button and pass down props to Customer
     render() {
         return (
             <section className='CustomerList'>
                 <Nav />
-                
-                <Customer />
+                <Customer
+                customers = {this.state.customerList}
+                />
             </section>
         )
 

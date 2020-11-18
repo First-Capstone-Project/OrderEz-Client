@@ -10,6 +10,9 @@ class CustomerList extends Component {
     state = {
         customerList: []
     }
+
+    //Api call to get the customers
+    //
     componentDidMount(){
         CustomerService.getCustomers()
             .then(customerList => {
@@ -19,11 +22,15 @@ class CustomerList extends Component {
             })
     }
 
+    //Delete Customer
+    //
     handleDelete = (id) => {
         CustomerService.deleteCustomer(id)
         .then(this.props.history.push('/'))
     }
 
+    //Map out and sort customers
+    //
     getCustomers = () => {
         return(this.state.customerList)
         .sort((customer1,customer2)=>{

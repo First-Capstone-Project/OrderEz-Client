@@ -12,6 +12,8 @@ class Reciept extends Component {
     }
 
 
+    //Api call to get Info for the order and customer
+    //
     componentDidMount() {
         let rID = this.props.match.params.reciept_id
         OrderService.getReciept(rID)
@@ -27,6 +29,8 @@ class Reciept extends Component {
                 })
             })    
     }
+    //map out the reciept
+    //
     renderReciept = () => {
         return (this.state.reciept).map((res,index) => {
             const name = res.item_name
@@ -37,6 +41,8 @@ class Reciept extends Component {
         })
 
     }
+    //Total of the order before tax
+    //
     total = () => {
         let total = 0
         this.state.reciept.map((res)=>{
@@ -44,6 +50,9 @@ class Reciept extends Component {
         })
         return total
     }
+
+    //Map out the Customer info
+    //
     customer = () => {
         return this.state.customer.map((res,index)=>{
         return <div key={index} className='box'>

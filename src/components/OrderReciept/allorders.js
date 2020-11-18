@@ -12,6 +12,8 @@ class AllOrders extends Component {
         active: []
     }
 
+    //Api call to get all active orders
+    //
     componentDidMount() {
         OrderService.getAll()
             .then(res => {
@@ -21,6 +23,8 @@ class AllOrders extends Component {
             })
     }
 
+    //Render the orders
+    //
     renderList = () => {
         return this.state.active
         .sort((order1,order2)=>{
@@ -34,7 +38,7 @@ class AllOrders extends Component {
                     {order.customer_name}
                 </Link></td>
                 <td>{order.customer_adress}</td>
-                <td>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(order.sum)}</td>
+                <td>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(order.sum)}</td> 
             </tr>
         })
         

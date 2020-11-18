@@ -21,11 +21,15 @@ class MenuList extends Component {
         })
     }
     
+    //Delete item
+    //
     handleDelete = (id) => {
         ItemService.deleteItem(id)
         .then(this.props.history.push('/'))
     }
 
+    //Map and sort the items
+    //
     getMenuItem = () => {
         return (this.state.itemList)
         .sort((item1,item2)=>{

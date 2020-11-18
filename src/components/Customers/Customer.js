@@ -7,11 +7,10 @@ import CustomerService from '../services/customer-api-service'
 class Customer extends Component {
 
     state = {
-        customerList: []
+    customerList: []
     }
 
-
-    //API call to server to get Customers
+    //Api call to get Customers
     //
     componentDidMount(){
         CustomerService.getCustomers()
@@ -20,9 +19,10 @@ class Customer extends Component {
                     customerList
                 })
             })
-    }
+     }
 
-       //Search button form
+    
+    //Search button form
     //
     handleFormSubmit = (event) => {
         event.preventDefault();
@@ -38,15 +38,17 @@ class Customer extends Component {
 
     }
     
-
+    //Select Customer
+    //
     handleClick = (event) => {
-        console.log(event)
         OrderService.createOrder(event)
         .then(res => {
             this.props.history.push(`/items/${res.order_customer_id}`);
         })
     }
     
+    //Map out customers
+    //
     getCustomers = () => {
         return(this.state.customerList).map((customer,index)=>{
             return <div key={index} className='box'>

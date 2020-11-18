@@ -8,12 +8,14 @@ class Item extends Component {
     state = {
         id: 0,
         current: [],
-        check: true,
+        check: false,
         check1: false,
         check2: false,
         total: 0
     }
 
+    //Item id
+    //
     componentDidMount() {
         this.setState({
             id: this.props.match.params.order_id
@@ -21,11 +23,14 @@ class Item extends Component {
 
     }
 
+    //Redirect to Reciept
+    //
     finish = () => {
         this.props.history.push(`/reciept/${this.state.id}`)
     }
 
-
+    //Add items to current order
+    //
     handleClick = (event) => {
         const customerOrderId = this.state.id
         OrderService.addItem(event, customerOrderId)
@@ -38,6 +43,8 @@ class Item extends Component {
                     }))
     }
 
+    //Map out the items
+    //
     getMenuItem = (type) => {
         return (this.props.items).map((item, index) => {
             if (item.type === type) {
@@ -53,6 +60,8 @@ class Item extends Component {
         })
     }
 
+    //Expand classes
+    //
     expandPizza = () => {
         this.setState(prevState => ({
             check: !prevState.check
@@ -112,6 +121,7 @@ class Item extends Component {
                                             <th>Price</th>
                                         </tr>
                                         {current}
+
                                     </tbody>
                                 </table>
                             </div>
