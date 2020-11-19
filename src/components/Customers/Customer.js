@@ -31,7 +31,7 @@ class Customer extends Component {
        CustomerService.filter(search)
        .then(result => {
            this.setState({
-               customerList: result.rows
+               customerList: result
            })
        })
        
