@@ -60,8 +60,8 @@ const OrderService = {
     },
     //GET request for all active orders
     //
-    getAll(){
-        return fetch(`${config.API_ENDPOINT}/active`)
+    getAll(name){
+        return fetch(`${config.API_ENDPOINT}/active/${name}`)
         .then(res => 
             (!res.ok)
               ? res.json().then(e => Promise.reject(e))

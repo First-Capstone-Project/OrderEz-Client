@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom'
 import './Customer.css'
 import OrderService from '../services/order-api-service'
 import CustomerService from '../services/customer-api-service'
+import Search from '../search'
 class Customer extends Component {
 
     state = {
@@ -72,26 +73,10 @@ class Customer extends Component {
     render() {
         return (
             <div>
-            <div className='box'>
-
-                    <div className='boxheader'>
-                        <div className='boxtitle'>
-                            <h1>Enter Customer's Phone Number</h1>
-                        </div>
-                    </div>
-
-                    <form onSubmit={this.handleFormSubmit}>
-                        <div className='boxbody'>
-                            <div className='formgroup'>
-                                <input required name='search' id='search' type="text" placeholder="Search.."></input>
-                            </div>
-                        </div>
-                        <div className='boxfooter'>
-                        <button className='btn' type='submit'>Search</button>
-                        </div>
-                    </form>
-
-            </div>    
+            <Search 
+            handle = {this.handleFormSubmit}
+            title = {'Search by Customer'}
+            />    
             <section className='customer-select'>
             <div className='allorders'>
                 {this.getCustomers()}

@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import OrderService from '../services/order-api-service'
 import Nav from '../../nav/nav'
 import Search from '../search'
-import CustomerService from '../services/customer-api-service'
 import './order.css'
 
 class AllOrders extends Component {
@@ -17,7 +16,7 @@ class AllOrders extends Component {
     //Api call to get all active orders
     //
     componentDidMount() {
-        OrderService.getAll()
+        OrderService.getAll('all')
             .then(res => {
                 this.setState({
                     active: res.rows
@@ -76,11 +75,29 @@ class AllOrders extends Component {
     }
 
 
+    handleFormSubmit = event =>{
+        event.preventDefault()
+        const form = new FormData(event.target)
+        const search = form.get('search')
+        OrderService.getAll(search)
+            .then(res => {
+                this.setState({
+                    active: res.rows
+                })
+            })
+    }
+
+   
+
+
 
     render() {
         return <div>
             <Nav />
-            <Search />
+            <Search
+            handle = {this.handleFormSubmit}
+            title = {'Search by Name'}
+            />
             <div className='boxheader'>
 
                 <h1 className='boxtitle'>All Active orders</h1>
