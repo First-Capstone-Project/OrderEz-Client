@@ -45,3 +45,11 @@ h4{
     width: 450px;
     border-collapse: collapse;
 }
+.allorders{
+    display: flex;
+    flex-wrap: wrap;
+}
+.item-orders {
+    flex: 1 0 21%; /* explanation below */
+    margin: 10px;
+  }

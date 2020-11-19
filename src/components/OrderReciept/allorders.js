@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import OrderService from '../services/order-api-service'
 import Nav from '../../nav/nav'
+import Search from '../search'
+import CustomerService from '../services/customer-api-service'
 import './order.css'
 
 class AllOrders extends Component {
@@ -27,21 +29,65 @@ class AllOrders extends Component {
     //
     renderList = () => {
         return this.state.active
-        .sort((order1,order2)=>{
-            return (order1.customer_id_fk-order2.customer_id_fk)
-        })
-        .map((order,index) => {
-            return <tr key={index}>
-                <td>{order.customer_id_fk}</td>
-                <td>{format(new Date(order.order_date),'MM/dd/yyyy  hh:mm:ss a')}</td>
-                <td><Link to={`/reciept/${order.customer_id_fk}`}>
-                    {order.customer_name}
-                </Link></td>
-                <td>{order.customer_adress}</td>
-                <td>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(order.sum)}</td> 
-            </tr>
-        })
-        
+            .sort((order1, order2) => {
+                return (order1.customer_id_fk - order2.customer_id_fk)
+            })
+            .map((order, index) => {
+                return <tr key={index}>
+                    <td>{order.customer_id_fk}</td>
+                    <td>{format(new Date(order.order_date), 'MM/dd/yyyy  hh:mm:ss a')}</td>
+                    <td><Link to={`/reciept/${order.customer_id_fk}`}>
+                        {order.customer_name}
+                    </Link></td>
+                    <td>{order.customer_adress}</td>
+                    <td>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(order.sum)}</td>
+                </tr>
+            })
+
+    }
+
+    renderOrders = () => {
+        return this.state.active
+            .sort((order1, order2) => {
+                return (order1.customer_id_fk - order2.customer_id_fk)
+            })
+            .map((order, index) => {
+                return <div key={index} className='box item-orders'>
+
+                    <div className='boxheader'>
+
+                        <div className='boxtitle'>
+                            <Link to={`/reciept/${order.customer_id_fk}`}>
+                                <h3>{order.customer_name}</h3>
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className='boxbody'>
+                        Date created: {format(new Date(order.order_date), 'MM/dd/yyyy  hh:mm:ss a')}
+                    </div>
+
+                    <div className='boxfooter'>
+                        Total: {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(order.sum)}
+                    </div>
+                </div>
+
+            })
+    }
+
+    //Search button form
+    //
+    handleFormSubmit = (event) => {
+        event.preventDefault();
+        const form = new FormData(event.target)
+        const search = form.get('search')
+        CustomerService.filter(search)
+            .then(result => {
+                this.setState({
+                    active: result
+                })
+            })
+
     }
 
 
@@ -49,28 +95,39 @@ class AllOrders extends Component {
         return <div>
             <Nav />
             <div className='box'>
-            <div className='boxheader'> 
-            <div className='boxtitle'>   
-            <h1>All Active Orders:</h1>
+
+                <div className='boxheader'>
+                    <div className='boxtitle'>
+                        <h1>Enter Customer's Phone Number</h1>
+                    </div>
+                </div>
+
+                <form onSubmit={this.handleFormSubmit}>
+                    <div className='boxbody'>
+                        <div className='formgroup'>
+                            <input required name='search' id='search' type="text" placeholder="Search.."></input>
+                        </div>
+                    </div>
+                    <div className='boxfooter'>
+                        <button className='btn' type='submit'>Search</button>
+                    </div>
+                </form>
+
             </div>
+            <div className='boxheader'>
+
+                <h1 className='boxtitle'>All Active orders</h1>
+
             </div>
             <div className='boxbody'>
-            <table className="table">
-                <tbody>
-                <tr>
-                    <th>Order #</th>
-                    <th>Date Ordered</th>
-                    <th>Name</th>
-                    <th>Adress</th>
-                    <th>Total</th>
-                </tr>
-                {this.renderList()}
-                </tbody>
-            </table>
+                <div className='allorders'>
+                    {this.renderOrders()}
+                </div>
             </div>
-            </div>    
         </div>
     }
+
+
 }
 
 export default withRouter(AllOrders)

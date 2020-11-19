@@ -33,8 +33,7 @@ class Customer extends Component {
            this.setState({
                customerList: result
            })
-       })
-       
+       })  
 
     }
     
@@ -51,7 +50,7 @@ class Customer extends Component {
     //
     getCustomers = () => {
         return(this.state.customerList).map((customer,index)=>{
-            return <div key={index} className='box'>
+            return <div key={index} className='box item-orders'>
                 <div className='boxheader'>
                 <div className='boxtitle'>   
                 <h3>{customer.customer_name}</h3>
@@ -92,9 +91,11 @@ class Customer extends Component {
                         </div>
                     </form>
 
-                </div>    
+            </div>    
             <section className='customer-select'>
+            <div className='allorders'>
                 {this.getCustomers()}
+            </div>
             </section>
             </div>
         )
