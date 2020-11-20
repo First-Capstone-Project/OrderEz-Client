@@ -9,6 +9,7 @@ Nav - https://prnt.sc/vmn8iz
 4.Menu - List of all the items and add items
 
 ## Home Page - https://prnt.sc/vmn85i
+-Type in 'all' to see all orders
 -Can search for customers by name
 -Pagnation
 -Can click on any order to see details
