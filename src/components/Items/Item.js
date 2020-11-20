@@ -154,7 +154,7 @@ class Item extends Component {
                                     <button className='expand' onClick={this.expandBurger}>Burgers</button>
                                 </div>
                                 <div className={classname2}>
-                                    {this.getMenuItem('burgers')}
+                                    {this.getMenuItem('Burger')}
                                 </div>
                             </div>
 
