@@ -42,9 +42,10 @@ class AllOrders extends Component {
                     <td>{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(order.sum)}</td>
                 </tr>
             })
-
     }
 
+    //Map out the active orders
+    //
     renderOrders = () => {
         return this.state.active
             .sort((order1, order2) => {
@@ -74,7 +75,8 @@ class AllOrders extends Component {
             })
     }
 
-
+    //Search button form handle
+    //
     handleFormSubmit = event =>{
         event.preventDefault()
         const form = new FormData(event.target)

@@ -23,7 +23,7 @@ class Customer extends Component {
      }
 
     
-    //Search button form
+    //Search button form handle
     //
     handleFormSubmit = (event) => {
         event.preventDefault();
@@ -75,7 +75,7 @@ class Customer extends Component {
             <div>
             <Search 
             handle = {this.handleFormSubmit}
-            title = {'Search by Customer'}
+            title = {'Search by Customer Number'}
             />    
             <section className='customer-select'>
             <div className='allorders'>

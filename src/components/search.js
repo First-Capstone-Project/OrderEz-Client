@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
 class Search extends Component {
- 
+    
     
     render() {
         return <div className='box'>
@@ -13,7 +13,7 @@ class Search extends Component {
             </div>
         </div>
 
-        <form onSubmit={()=>this.props.handle(event)}>
+        <form onSubmit={this.props.handle}>
             <div className='boxbody'>
                 <div className='formgroup'>
                     <input required name='search' id='search' type="text" placeholder="Search.."></input>
