@@ -8,7 +8,8 @@ import AddCustomer from '../Customers/AddCustomer'
 class CustomerList extends Component {
 
     state = {
-        customerList: []
+        customerList: [],
+        error: null
     }
 
     //Api call to get the customers
@@ -26,7 +27,11 @@ class CustomerList extends Component {
     //
     handleDelete = (id) => {
         CustomerService.deleteCustomer(id)
-        .then(this.props.history.push('/'))
+        .catch(res => {
+            this.setState({
+                error: `Can't delete this customer, it has active orders`
+            })
+        })
     }
 
     //Map out and sort customers
@@ -51,6 +56,7 @@ class CustomerList extends Component {
         return(
         <section>
            <Nav />
+           <h1 className='error'>{this.state.error}</h1>
            <AddCustomer /> 
            <div className='box'>
            

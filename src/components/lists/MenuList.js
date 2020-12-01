@@ -8,6 +8,7 @@ import AddItem from '../Items/AddItem'
 class MenuList extends Component {
     state = {
         itemList: [],
+        error : null
     }
 
     //Api call to server to get Items
@@ -20,12 +21,21 @@ class MenuList extends Component {
             })
         })
     }
-    
+
+    componentDidCatch(error, info) {
+        console.log(error);
+    }
+
     //Delete item
     //
     handleDelete = (id) => {
         ItemService.deleteItem(id)
-        .then(this.props.history.push('/'))
+        .catch(res => {
+            this.setState({
+                error: `Can't delete this item, it is used in an active order`
+            })
+        })
+        //.then(this.props.history.push('/'))
     }
 
     //Map and sort the items
@@ -50,6 +60,7 @@ class MenuList extends Component {
         return(
             <section>
            <Nav />
+            <h1 className='error'>{this.state.error}</h1>
            <AddItem />
            <div className='box'>
            <div className='boxheader'>

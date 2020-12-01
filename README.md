@@ -7,6 +7,7 @@ Nav - https://prnt.sc/vmn8iz
 2.New Order - Create a new Order
 3.Customers - List of all customers and add customers
 4.Menu - List of all the items and add items
+This app lets you save customers and save custom menu, then it allows you to create orders from the from all the customers and menu items
 
 ## Home Page - https://prnt.sc/vmn85i
 -Type in 'all' to see all orders

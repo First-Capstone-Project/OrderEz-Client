@@ -237,3 +237,15 @@ border-radius: 0;
 box-shadow: none;
 border-color: #d2d6de;
 }
+.error{
+    color: red;
+}
+.cont{
+    display: flex;
+}
+.text{
+    margin-left: 25px;
+}
+img{
+    width: 350px;
+}

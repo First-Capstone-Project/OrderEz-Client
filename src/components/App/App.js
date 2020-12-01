@@ -10,6 +10,8 @@ import CustomerList from '../lists/CustomerList'
 import MenuList from '../lists/MenuList'
 import EditCustomer from '../Edit/EditCustomer'
 import EditItem from '../Edit/EditItem'
+import About from '../about'
+import LandingPage from '../landing'
 
 
 class App extends Component {
@@ -72,6 +74,16 @@ class App extends Component {
         <Route 
         path='/menulist'
         component={MenuList}
+        />
+        
+        <Route 
+        path='/about'
+        component={About}
+        />
+
+        <Route 
+        path='/landing'
+        component={LandingPage}
         />
   
       </div>
