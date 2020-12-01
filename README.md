@@ -1,6 +1,9 @@
 # OrderEz
 link to live app - https://orderez.vercel.app/
 
+# Technology
+This app uses React.js for the Client side, Node.js and Express for the server side and PostgreSQL for the database
+
 # Summary
 Nav - https://prnt.sc/vmn8iz
 1.Home - Home Page
