@@ -11,7 +11,15 @@ export default class LandingPage extends Component {
                 <h1>OrderEz</h1>
                 <h2>Online Free POS</h2>
                 </div>
-                
+                <div className='boxbody'>
+                <h2>How to get Started!</h2>
+                <ol>
+                <p><li>Start by adding your menu Items one by one</li></p>
+                <p><li>Save the Name,Phone Number and Adress on the customer whenever they call to make an order</li></p>
+                <p><li>Now Creating orders for returning customers is easy</li></p>
+                </ol>
+                </div>
+
                 <div className='boxbody '>
                 <h2>Save your customers</h2>
                 <div className='cont'>

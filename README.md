@@ -10,7 +10,12 @@ Nav - https://prnt.sc/vmn8iz
 2.New Order - Create a new Order
 3.Customers - List of all customers and add customers
 4.Menu - List of all the items and add items
+
+# Most Restaurants have returning customers that order from their favorite place almost every day. Working in a place like this where we used to take orders on the phone, we would take the orders, write them out on paper and send it to the kitchen. The owners did not want to invest in a POS since they have been doing this for over 25 years. OrderEZ is a web app that can help out with this issue and will be free and easy to use with any smartphone.
+
 This app lets you save customers and save custom menu, then it allows you to create orders from the from all the customers and menu items
+
+
 
 ## Home Page - https://prnt.sc/vmn85i
 -Type in 'all' to see all orders
